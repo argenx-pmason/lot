@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Martijn Busselen",
+    "id": "mbusselen"
+  },
+  {
+    "name": "Jean-Michel Bodart",
+    "id": "jbodart"
+  },
+  {
+    "name": "Robert Woodiwiss",
+    "id": "rwoodiwiss"
+  },
+  {
+    "name": "Phil Mason",
+    "id": "pmason"
+  },
+  {
+    "name": "Steven Shipp",
+    "id": "sshipp"
+  },
+  {
+    "name": "Jasmine Kestemont",
+    "id": "jkestemont"
+  },
+  {
+    "name": "Stijn Rogiers",
+    "id": "srogiers"
+  },
+  {
+    "name": "Simon Rigby",
+    "id": "srigby"
+  },
+  {
+    "name": "Louella Schoemacher",
+    "id": "lschoemacher"
+  },
+  {
+    "name": "Kimberley Santing",
+    "id": "ksanting"
+  },
+  {
+    "name": "Gordon van Eyck",
+    "id": "geyck"
+  },
+  {
+    "name": "Stephan van Driel",
+    "id": "Stephan"
+  },
+  {
+    "name": "argenx general",
+    "id": "argenx_general"
+  },
+  {
+    "name": "Lieke Gijsbers",
+    "id": "Lieke"
+  },
+  {
+    "name": "Bas Van Bakel",
+    "id": "bvanbakel"
+  },
+  {
+    "name": "Kai Wankel",
+    "id": "kwanke"
+  },
+  {
+    "name": "Hiten Meisuria",
+    "id": "hmeisuria"
+  },
+  {
+    "name": "argenx test",
+    "id": "argenx_test"
+  },
+  {
+    "name": "Pascale Schrauben",
+    "id": "pschrauben"
+  },
+  {
+    "name": "Berend-Jan Velthuis",
+    "id": "bjvelthuis"
+  },
+  {
+    "name": "sandeep juneja",
+    "id": "sjuneja"
+  },
+  {
+    "name": "eclin_service_account",
+    "id": "argenx_LSAF_API"
+  },
+  {
+    "name": "PPD_service_account",
+    "id": "svc_argenx_ppd_lsaf"
+  },
+  {
+    "name": "Administrator",
+    "id": "sysadmin"
+  }
+]
