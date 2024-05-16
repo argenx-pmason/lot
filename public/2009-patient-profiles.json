@@ -1,0 +1,77 @@
+{
+  "purpose": "2009 patient profiles",
+  "source libname": [{ "libname": "sdtm", "path": "/sdtm" }],
+  "source filename": [{ "filename": "stuff2", "path": "/stuff2" }],
+  "outputs": [
+    {
+      "no": 1,
+      "title": "adsl  (Subject-Level Analysis Dataset)",
+      "program": "d_adsl.sas"
+    },
+    {
+      "no": 2,
+      "title": "adex (Exposure Analysis Dataset)",
+      "program": "d_adex.sas"
+    },
+    {
+      "no": 3,
+      "title": "adae (SAE Analysis Dataset)",
+      "program": "d_adsae.sas"
+    },
+    {
+      "no": 4,
+      "title": "advs (Vital Signs Analysis Dataset)",
+      "program": "d_advs.sas"
+    },
+    {
+      "no": 5,
+      "title": "adpdai  (BPDAI Skin Assessment Analysis Dataset)",
+      "program": "d_adbpdai.sas"
+    },
+    {
+      "no": 6,
+      "title": "adpdaimc  (BPDAI Mucous Assessment Analysis Dataset)",
+      "program": "d_adbpdaimc.sas"
+    },
+    {
+      "no": 7,
+      "title": "addc (Disease Status Analysis Dataset)",
+      "program": "d_addc.sas"
+    },
+    {
+      "no": 8,
+      "title": "adles (Lesion Assessment Analysis Dataset)",
+      "program": "d_adles.sas"
+    },
+    {
+      "no": 9,
+      "title": "adapr  (Actual Prednisone Analysis Dataset)",
+      "program": "d_adapr.sas"
+    },
+    {
+      "no": 10,
+      "title": "adppd (Predicted Prednisolone Analysis Dataset)",
+      "program": "d_adppd.sas"
+    },
+    {
+      "no": 11,
+      "title": "adcm (Concomitant Medications Analysis Dataset)",
+      "program": "d_adcm.sas"
+    },
+    { "no": 12, "title": "Copy", "program": "d_copyraw.sas" },
+    {
+      "section": "Safety",
+      "type": "Figure",
+      "num": "1",
+      "no": 13,
+      "title": "Prednisolone Patient Profile ",
+      "population": "Safety Set",
+      "program": "f_pred_pp.sas"
+    },
+    {
+      "no": 14,
+      "title": "Patient Listing",
+      "program": "d_ptlist.sas"
+    }
+  ]
+}

@@ -28,7 +28,7 @@
   color: #61dafb;
 }
 .required {
-  background-color: rgba(30, 255, 0, 0.466);
+  background-color:#ffeecc;
 }
 
 @keyframes App-logo-spin {

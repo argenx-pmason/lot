@@ -1,0 +1,112 @@
+{
+  "purpose": "2009 adam datasets",
+  "source libname": [{ "libname": "adam", "path": "/adam" }],
+  "source filename": [{ "filename": "stuff1", "path": "/stuff1" }],
+  "outputs": [
+    {
+      "no": 1,
+      "dataset": "adsl",
+      "program": "d_adsl",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 2,
+      "dataset": "adae",
+      "program": "d_adae",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 3,
+      "dataset": "adaper",
+      "program": "d_adaper",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 4,
+      "dataset": "adaperte",
+      "program": "d_adaperte",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 5,
+      "dataset": "adcm",
+      "program": "d_adcm",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 6,
+      "dataset": "adcmice",
+      "program": "d_adcmice",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 7,
+      "dataset": "adcmncod",
+      "program": "d_adcmncod",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 8,
+      "dataset": "adeg",
+      "program": "d_adeg",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 9,
+      "dataset": "adfa",
+      "program": "d_adfa",
+      "section": null,
+      "population": "EFF"
+    },
+    {
+      "no": 10,
+      "dataset": "adlb",
+      "program": "d_adlb",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 11,
+      "dataset": "admh",
+      "program": "d_admh",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 12,
+      "dataset": "adpd",
+      "program": "d_adpd",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 13,
+      "dataset": "adqs",
+      "program": "d_adqs",
+      "section": null,
+      "population": "SAF"
+    },
+    {
+      "no": 14,
+      "dataset": "adrs",
+      "program": "d_adrs",
+      "section": null,
+      "population": "EFF"
+    },
+    {
+      "no": 15,
+      "dataset": "adtte",
+      "program": "d_adtte",
+      "section": null,
+      "population": "EFF"
+    }
+  ]
+}

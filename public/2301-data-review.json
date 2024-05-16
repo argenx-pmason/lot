@@ -1,0 +1,203 @@
+{
+  "purpose": "2301 data review",
+  "source libname": [{ "libname": "sdtm2", "path": "/sdtm2" }],
+  "source filename": [{ "filename": "stuff4", "path": "/stuff4" }],
+  "outputs": [
+    { "num": "1", "program": "d_adsl", "dataset": "adsl" },
+    { "num": "2", "program": "d_adft", "dataset": "adft" },
+    { "num": "3", "program": "d_adqs", "dataset": "adqs" },
+    {
+      "type": "Listing",
+      "num": "1.1",
+      "no": "LISTING 1.1",
+      "title": "DEMOGRAPHIC DATA",
+      "population": "All PARTICIPANTS",
+      "program": "l_demog"
+    },
+    {
+      "type": "Listing",
+      "num": "1.2",
+      "no": "LISTING 1.2",
+      "title": "CMS GENOTYPING",
+      "population": "All PARTICIPANTS",
+      "program": "l_genotype"
+    },
+    {
+      "type": "Listing",
+      "num": "1.3",
+      "no": "LISTING 1.3",
+      "title": "CMS DISEASE HISTORY AND HEALTH CARE UTILIZATION OVERVIEW",
+      "population": "All PARTICIPANTS",
+      "program": "l_cmsdh"
+    },
+    {
+      "type": "Listing",
+      "num": "1.4",
+      "no": "LISTING 1.4",
+      "title": "HEALTH CARE UTILIZATION HISTORY",
+      "population": "All PARTICIPANTS",
+      "program": "l_hchist"
+    },
+    {
+      "type": "Listing",
+      "num": "1.4.1",
+      "no": "LISTING 1.4.1",
+      "title": "CHANGE IN HEALTH STATUS",
+      "population": "All PARTICIPANTS",
+      "program": "l_chghs"
+    },
+    {
+      "type": "Listing",
+      "num": "1.5",
+      "no": "LISTING 1.5",
+      "title": "MEDICAL HISTORY",
+      "population": "All PARTICIPANTS",
+      "program": "l_mh"
+    },
+    {
+      "type": "Listing",
+      "num": "1.6",
+      "no": "LISTING 1.6",
+      "title": "VITAL SIGNS",
+      "population": "All PARTICIPANTS",
+      "program": "l_vs"
+    },
+    {
+      "type": "Listing",
+      "num": "1.7",
+      "no": "LISTING 1.7",
+      "title": "TIMED UP AND GO",
+      "population": "All PARTICIPANTS",
+      "program": "l_tug"
+    },
+    {
+      "type": "Listing",
+      "num": "1.8",
+      "no": "LISTING 1.8",
+      "title": "QMG",
+      "population": "All PARTICIPANTS",
+      "program": "l_qmg"
+    },
+    {
+      "type": "Listing",
+      "num": "1.9",
+      "no": "LISTING 1.9",
+      "title": "MG-ADL",
+      "population": "All PARTICIPANTS",
+      "program": "l_adl"
+    },
+    {
+      "type": "Listing",
+      "num": "1.10",
+      "no": "LISTING 1.10",
+      "title": "MG-ADL PRO",
+      "population": "All PARTICIPANTS",
+      "program": "l_adlpro"
+    },
+    {
+      "type": "Listing",
+      "num": "1.11",
+      "no": "LISTING 1.11",
+      "title": "PROMIS-GHS",
+      "population": "All PARTICIPANTS",
+      "program": "l_promisghs"
+    },
+    {
+      "type": "Listing",
+      "num": "1.12",
+      "no": "LISTING 1.12",
+      "title": "PROMIS-DFL",
+      "population": "All PARTICIPANTS",
+      "program": "l_promisdfl"
+    },
+    {
+      "type": "Listing",
+      "num": "1.13",
+      "no": "LISTING 1.13",
+      "title": "EQ-5D-5L",
+      "population": "All PARTICIPANTS",
+      "program": "l_eq"
+    },
+    {
+      "type": "Listing",
+      "num": "1.14",
+      "no": "LISTING 1.14",
+      "title": "PROCEDURE RELATED ADVERSE EVENTS",
+      "population": "All PARTICIPANTS",
+      "program": "l_pae"
+    },
+    {
+      "type": "Listing",
+      "num": "1.15",
+      "no": "LISTING 1.15",
+      "title": "CHANGES TO CMS SYMPTOMS",
+      "population": "All PARTICIPANTS",
+      "program": "l_cmss"
+    },
+    {
+      "type": "Listing",
+      "num": "1.16",
+      "no": "LISTING 1.16",
+      "title": "CONCOMITANT THERAPIES",
+      "population": "All PARTICIPANTS",
+      "program": "l_cm"
+    },
+    {
+      "type": "Listing",
+      "num": "1.17",
+      "no": "LISTING 1.17",
+      "title": "PROCEDURES",
+      "population": "All PARTICIPANTS",
+      "program": "l_pr"
+    },
+    {
+      "type": "Listing",
+      "num": "1.18",
+      "no": "LISTING 1.18",
+      "title": "HOSPITALIZATONS",
+      "population": "All PARTICIPANTS",
+      "program": "l_ho"
+    },
+    {
+      "type": "Listing",
+      "num": "1.19",
+      "no": "LISTING 1.19",
+      "title": "END OF STUDY",
+      "population": "All PARTICIPANTS",
+      "program": "l_eos"
+    },
+    {
+      "type": "Figure",
+      "num": "1.20",
+      "no": "FIGURE 1.20",
+      "title": "MG-ADL BY SUBJECT",
+      "population": "All PARTICIPANTS",
+      "program": "f_adl"
+    },
+    {
+      "type": "Figure",
+      "num": "1.21",
+      "no": "FIGURE 1.21",
+      "title": "BOX PLOT OF MG-ADL",
+      "population": "All PARTICIPANTS",
+      "program": "f_box"
+    },
+    {
+      "type": "Figure",
+      "num": "1.22",
+      "no": "FIGURE 1.22",
+      "title": "BAR PLOT OF MG-ADL SINGLE SCORES",
+      "population": "All PARTICIPANTS",
+      "program": "f_bar"
+    },
+    {
+      "type": "Figure",
+      "num": "1.23",
+      "no": "FIGURE 1.23",
+      "title": "SCORES BY SUBJECT",
+      "population": "All PARTICIPANTS",
+      "program": "f_allinone"
+    },
+    { "program": "createxls" }
+  ]
+}

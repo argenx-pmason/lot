@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import lot from "./1802_final_sap_lot.json";
+// import lot from "./1802_final_sap_lot.json";
 import {
   Box,
   Button,
@@ -14,16 +14,21 @@ import {
   Grid,
   Tooltip,
   IconButton,
+  Popper,
+  Paper,
   Toolbar,
 } from "@mui/material";
-import { LicenseInfo } from "@mui/x-data-grid-pro";
 import {
+  LicenseInfo,
   GridRowModes,
   DataGridPro,
   GridToolbarContainer,
   GridActionsCellItem,
   GridRowEditStopReasons,
   GridToolbarExport,
+  GridToolbarColumnsButton,
+  GridToolbarFilterButton,
+  GridToolbarDensitySelector,
 } from "@mui/x-data-grid-pro";
 import {
   Add,
@@ -32,66 +37,87 @@ import {
   Save,
   Cancel,
   Info,
-  FileDownload,
-  FileUpload,
+  // FileDownload,
   FolderCopy,
 } from "@mui/icons-material";
+// import { useDropzone } from "react-dropzone";
+// import Papa from "papaparse";
 import { InfoDialog } from "./components/InfoDialog";
 import userInfo from "./users.json";
-
-function EditToolbar(props) {
-  const {
-      setRows1,
-      setRowModesModel1,
-      setRows2,
-      setRowModesModel2,
-      setRows3,
-      setRowModesModel3,
-    } = props,
-    setRows = setRows1 || setRows2 || setRows3,
-    setRowModesModel =
-      setRowModesModel1 || setRowModesModel2 || setRowModesModel3;
-  const handleClick = () => {
-    const id = uuidv4();
-    setRows((oldRows) => [...oldRows, { id, name: "", age: "", isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: "name" },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<Add />} onClick={handleClick}>
-        Add record
-      </Button>
-      <GridToolbarExport />
-    </GridToolbarContainer>
-  );
-}
 
 function App() {
   LicenseInfo.setLicenseKey(
     "369a1eb75b405178b0ae6c2b51263cacTz03MTMzMCxFPTE3MjE3NDE5NDcwMDAsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI="
   );
+  function EditToolbar(props) {
+    const {
+        setRows1,
+        setRowModesModel1,
+        setRows2,
+        setRowModesModel2,
+        setRows3,
+        setRowModesModel3,
+      } = props,
+      setRows = setRows1 || setRows2 || setRows3,
+      setRowModesModel =
+        setRowModesModel1 || setRowModesModel2 || setRowModesModel3,
+      handleClick = () => {
+        const id = uuidv4();
+        setRows((oldRows) => [
+          ...oldRows,
+          { id, name: "", age: "", isNew: true },
+        ]);
+        setRowModesModel((oldModel) => ({
+          ...oldModel,
+          [id]: { mode: GridRowModes.Edit, fieldToFocus: "name" },
+        }));
+      };
+
+    return (
+      <GridToolbarContainer>
+        <Button color="primary" startIcon={<Add />} onClick={handleClick}>
+          Add record
+        </Button>
+        <GridToolbarColumnsButton />
+        <GridToolbarFilterButton />
+        <GridToolbarDensitySelector
+          slotProps={{ tooltip: { title: "Change density" } }}
+        />
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
+
   const { href } = window.location,
     [openInfo, setOpenInfo] = useState(false),
-    types = ["Table", "Listing", "Figure", "Dataset", "Other"],
-    users = userInfo.map((user) => {
-      return user.name;
-    }),
-    CROs = [
-      { id: "sgs", label: "SGS" },
-      { id: "cytel", label: "Cytel" },
-      { id: "celerion", label: "Celerion" },
-    ],
+    types = ["Dataset", "Figure", "Listing", "Other", "Table"],
+    users = userInfo
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((user) => {
+        return user.name;
+      }),
     reportingEvents = [
-      { id: "re1", label: "113-bp-2010" },
-      { id: "re2", label: "113-cidp-1902" },
-      { id: "re3", label: "113-hv-2204" },
+      { id: "2009-adam", label: "113-bp-2009 Adam" },
+      { id: "2009-patient-profiles", label: "113-bp-2009 Patient Profiles" },
+      { id: "2009-tlf", label: "113-bp-2009  TLF" },
+      { id: "2301-data-review", label: "113-cms-2301 Data Review" },
     ],
-    [tabValue, changeTabValue] = useState(0),
+    // CROs = [
+    //   { id: "sgs", label: "SGS" },
+    //   { id: "cytel", label: "Cytel" },
+    //   { id: "celerion", label: "Celerion" },
+    // ],
+    [tabValue, setTabValue] = useState(0),
     [rows1, setRows1] = useState([]),
+    renderCellExpand = (params) => {
+      return (
+        <GridCellExpand
+          value={params.value || ""}
+          width={params.colDef.computedWidth}
+        />
+      );
+    },
+    qc_status = ["Not yet started", "Not needed", "In progress", "Complete"],
     cols1 = [
       {
         field: "type",
@@ -100,6 +126,9 @@ function App() {
         editable: true,
         type: "singleSelect",
         valueOptions: types,
+        cellClassName: (params) => {
+          if (!params.value) return "required";
+        },
       },
       {
         field: "section",
@@ -112,19 +141,42 @@ function App() {
         headerName: "Num",
         editable: true,
         width: 120,
+        cellClassName: (params) => {
+          if (
+            !params.value &&
+            ["Table", "Listing", "Figure"].includes(params.row.type)
+          )
+            return "required";
+        },
       },
       {
         field: "title",
         headerName: "Title",
         editable: true,
-        width: 800,
+        width: 400,
         flexGrow: 1,
+        cellClassName: (params) => {
+          if (
+            !params.value &&
+            ["Table", "Listing", "Figure"].includes(params.row.type)
+          )
+            return "required";
+        },
+        renderCell: renderCellExpand,
       },
       {
         field: "population",
         headerName: "Population",
         editable: true,
         width: 80,
+        cellClassName: (params) => {
+          if (
+            (!params.value &&
+              ["Table", "Listing", "Figure"].includes(params.row.type)) ||
+            (params.value && ["Dataset"].includes(params.row.type))
+          )
+            return "required";
+        },
       },
       {
         field: "Col_A",
@@ -143,6 +195,15 @@ function App() {
         headerName: "Program",
         editable: true,
         width: 120,
+        cellClassName: (params) => {
+          if (!params.value) return "required";
+        },
+      },
+      {
+        field: "qc_program",
+        headerName: "QC Program",
+        editable: true,
+        width: 120,
       },
       {
         field: "dataset",
@@ -150,8 +211,7 @@ function App() {
         editable: true,
         width: 120,
         cellClassName: (params) => {
-          console.log("params", params);
-          if (params.row.type === "Dataset") return "required";
+          if (!params.value && params.row.type === "Dataset") return "required";
         },
       },
       {
@@ -161,8 +221,8 @@ function App() {
         width: 120,
       },
       {
-        field: "assignedTo",
-        headerName: "Assigned to",
+        field: "programmer",
+        headerName: "Programmer",
         editable: true,
         width: 200,
         type: "singleSelect",
@@ -172,7 +232,64 @@ function App() {
         field: "comments",
         headerName: "Comments",
         editable: true,
+        width: 300,
+        renderCell: renderCellExpand,
+      },
+      {
+        field: "qc",
+        headerName: "QC",
+        editable: true,
+        width: 80,
+        renderCell: (params) => {
+          const value = params.value,
+            isPass = [1, "1"].includes(value),
+            isFail = [0, "0"].includes(value);
+          return isPass ? "Pass" : isFail ? "Fail" : "?";
+        },
+      },
+      {
+        field: "qc_programmer",
+        headerName: "QC Programmer",
+        editable: true,
+        width: 200,
+        type: "singleSelect",
+        valueOptions: users,
+      },
+      {
+        field: "due_date",
+        headerName: "QC Due date",
+        editable: true,
         width: 120,
+        type: "date",
+      },
+      {
+        field: "qc_status",
+        headerName: "QC Status",
+        editable: true,
+        width: 120,
+        type: "singleSelect",
+        valueOptions: qc_status,
+      },
+      {
+        field: "qc_comments",
+        headerName: "QC Comments",
+        editable: true,
+        width: 300,
+        renderCell: renderCellExpand,
+      },
+      {
+        field: "priority",
+        headerName: "Priority",
+        editable: true,
+        type: "number",
+        width: 80,
+      },
+      {
+        field: "topline",
+        headerName: "Topline Results",
+        editable: true,
+        type: "boolean",
+        width: 80,
       },
       {
         field: "actions",
@@ -231,6 +348,9 @@ function App() {
         width: 120,
         editable: true,
         type: "text",
+        cellClassName: (params) => {
+          if (!params.value) return "required";
+        },
       },
       {
         field: "path",
@@ -238,6 +358,9 @@ function App() {
         width: 240,
         editable: true,
         type: "text",
+        cellClassName: (params) => {
+          if (!params.value) return "required";
+        },
       },
       {
         field: "actions",
@@ -294,6 +417,9 @@ function App() {
         width: 120,
         editable: true,
         type: "text",
+        cellClassName: (params) => {
+          if (!params.value) return "required";
+        },
       },
       {
         field: "path",
@@ -301,6 +427,9 @@ function App() {
         width: 240,
         editable: true,
         type: "text",
+        cellClassName: (params) => {
+          if (!params.value) return "required";
+        },
       },
       {
         field: "actions",
@@ -456,8 +585,177 @@ function App() {
     handleRowModesModelChange3 = (newRowModesModel) => {
       setRowModesModel3(newRowModesModel);
     },
-    [showColumnInfo, setShowColumnInfo] = useState(false);
-  console.log("lot", lot);
+    [columnInfo, setColumnInfo] = useState("hover over a column to get help"),
+    [purpose, setPurpose] = useState(""),
+    getJsonFile = (fileName) => {
+      fetch(fileName).then(function (response) {
+        console.log(response);
+        if (response.ok) {
+          response.text().then(function (text) {
+            console.log(`${text.length} characters read from file ${fileName}`);
+            const obj = JSON.parse(text);
+            setRows1(obj["outputs"].map((row) => ({ id: uuidv4(), ...row })));
+            setRows2(
+              obj["source libname"].map((row) => ({ id: uuidv4(), ...row }))
+            );
+            setRows3(
+              obj["source filename"].map((row) => ({ id: uuidv4(), ...row }))
+            );
+            setPurpose(obj["purpose"]);
+          });
+        } else {
+          console.log("HTTP-Error: " + response.status);
+          setRows1([]);
+        }
+      });
+    },
+    isOverflown = (element) => {
+      return (
+        element.scrollHeight > element.clientHeight ||
+        element.scrollWidth > element.clientWidth
+      );
+    },
+    openPopper = (event) => {
+      const ct = event.currentTarget,
+        col = ct.getAttribute("data-field"),
+        helpText = help[col] || "no help available for this column";
+      setColumnInfo(helpText);
+    },
+    closePopper = (event) => {
+      setColumnInfo("hover over a column to get help");
+    },
+    help = {
+      libname: "Libname of source data, e.g. cro, sdtm, adam, rdata, crordata",
+      filename: "The filename of the source data",
+      path: "The path to the source data",
+      type: "“Type” column is mandatory and must be filled for TLF outputs (only the first letter is required).",
+      section:
+        "“Section” column is optional, could be used to separate different types of outputs e.g. “ADaM” vs “Tables” vs “Listings” vs “Figures”, or “Safety” vs “Efficacy” vs “Demography” vs “Disposition” ",
+      num: "“Num” column is optional for datasets and mandatory for TLF outputs, and should contain the output type followed by the output number, as they should appear in the output title. ",
+      title:
+        "“Title” column is mandatory for TLF outputs, and should contain the description to appear in the output title (after output type and number).  For datasets it is optional, can be left empty or set to the dataset label. ",
+      population:
+        "Population column is mandatory and must be filled for TLF outputs, should be left blank for datasets.",
+      program:
+        "“SAS Program” column is mandatory, it should contain the program name (the ‘.sas’ extension is optional).  The column could also be used to specify a non-SAS program (e.g. an R program with its extension .R or .Rmd can be specified here). ",
+      dataset:
+        "“Dataset” column is optional for TLF outputs and mandatory for datasets (should contain the output dataset name without libname)",
+      parameters: "Parameters to be used in automation, e.g. for multi macro",
+      assignedTo: "The user assigned to program the output",
+      comments: "Comments about the output",
+      Col_A: "Extra column A",
+      Col_B: "Extra column B",
+    },
+    GridCellExpand = React.memo(function GridCellExpand(props) {
+      const { width, value } = props;
+      const wrapper = React.useRef(null);
+      const cellDiv = React.useRef(null);
+      const cellValue = React.useRef(null);
+      const [anchorEl, setAnchorEl] = React.useState(null);
+      const [showFullCell, setShowFullCell] = React.useState(false);
+      const [showPopper, setShowPopper] = React.useState(false);
+
+      const handleMouseEnter = () => {
+        const isCurrentlyOverflown = isOverflown(cellValue.current);
+        setShowPopper(isCurrentlyOverflown);
+        setAnchorEl(cellDiv.current);
+        setShowFullCell(true);
+      };
+
+      const handleMouseLeave = () => {
+        setShowFullCell(false);
+      };
+
+      useEffect(() => {
+        if (!showFullCell) {
+          return undefined;
+        }
+
+        function handleKeyDown(nativeEvent) {
+          if (nativeEvent.key === "Escape") {
+            setShowFullCell(false);
+          }
+        }
+
+        document.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+          document.removeEventListener("keydown", handleKeyDown);
+        };
+      }, [setShowFullCell, showFullCell]);
+
+      return (
+        <Box
+          ref={wrapper}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          sx={{
+            alignItems: "center",
+            lineHeight: "24px",
+            width: "100%",
+            height: "100%",
+            position: "relative",
+            display: "flex",
+          }}
+        >
+          <Box
+            ref={cellDiv}
+            sx={{
+              height: "100%",
+              width,
+              display: "block",
+              position: "absolute",
+              top: 0,
+            }}
+          />
+          <Box
+            ref={cellValue}
+            sx={{
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
+          >
+            {value}
+          </Box>
+          {showPopper && (
+            <Popper
+              open={showFullCell && anchorEl !== null}
+              anchorEl={anchorEl}
+              style={{ width, marginLeft: -17 }}
+            >
+              <Paper
+                elevation={1}
+                style={{ minHeight: wrapper.current.offsetHeight - 3 }}
+              >
+                <Typography variant="body2" style={{ padding: 8 }}>
+                  {value}
+                </Typography>
+              </Paper>
+            </Popper>
+          )}
+        </Box>
+      );
+    });
+  //   onDrop = (e) => {
+  //     console.log("onDrop", e);
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       Papa.parse(reader.result, (err, data) => {
+  //         console.log('data',data);
+  //       });
+  //     };
+  //     reader.readAsBinaryString(e[0]);
+  //   },
+  //   { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
+  //     // Disable click and keydown behavior
+  //     noClick: true,
+  //     noKeyboard: true,
+  //     onDrop: onDrop,
+  //   });
+  // useEffect(() => {
+  //   console.log("acceptedFiles", acceptedFiles);
+  // }, [acceptedFiles]);
 
   return (
     <Box
@@ -473,42 +771,68 @@ function App() {
       }}
     >
       <AppBar position="sticky">
-        <Toolbar variant="dense">
-          <Typography variant="h6" gutterBottom>
+        <Toolbar variant="dense" sx={{ backgroundColor: "#ccebff" }}>
+          <Typography variant="h6" gutterBottom sx={{ color: "blue" }}>
             LOT Editor
           </Typography>
           <Box sx={{ width: 100 }}> </Box>
           <Autocomplete
             options={reportingEvents}
             sx={{
+              m: 0.5,
+              mt: 1,
               width: 300,
-              backgroundColor: "primary.light",
+              backgroundColor: "#ffffe6",
             }}
             renderInput={(params) => (
               <TextField {...params} label="Reporting Event" />
             )}
+            onChange={(event, reason) => {
+              console.log("event", event, "reason", reason);
+              if (reason === null) return;
+              const jsonFile = reason.id + ".json",
+                localUrl = `./${jsonFile}`;
+              getJsonFile(localUrl);
+            }}
           />
-          <Autocomplete
+          <TextField
+            sx={{
+              m: 0.5,
+              mt: 1,
+              width: 600,
+              flexGrow: 1,
+              backgroundColor: "#ffffe6",
+            }}
+            label="Purpose (A1 cell)"
+            variant="outlined"
+            value={purpose}
+            onChange={(event) => {
+              setPurpose(event.target.value);
+            }}
+          />
+          <Typography
+            align="center"
+            variant="body2"
+            sx={{ color: "blue", flexGrow: 0.5 }}
+          >
+            {columnInfo}
+          </Typography>
+          {/* <Autocomplete
             options={CROs}
-            sx={{ width: 300, backgroundColor: "primary.light" }}
+            sx={{ m: 0.5, width: 300, backgroundColor: "#ffffe6" }}
             renderInput={(params) => <TextField {...params} label="CRO" />}
-          />
+          /> */}
           <Box sx={{ flexGrow: 1 }}> </Box>
-          <Tooltip title="Copy from another Reporting Event">
+          {/* <div {...getRootProps({ className: "dropzone" })}>
+            <input {...getInputProps()} />
+            <p>Drag 'n' drop some files here</p>
+            <button type="button" onClick={open}>
+              Open File Dialog
+            </button>
+          </div>
+          <Tooltip title="Load a CSV">
             <IconButton
-              color="inherit"
-              size="large"
-              edge="end"
-              onClick={() => {
-                setOpenInfo(true);
-              }}
-            >
-              <FolderCopy />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Import data">
-            <IconButton
-              color="inherit"
+              sx={{ color: "blue" }}
               size="large"
               edge="end"
               onClick={() => {
@@ -517,22 +841,10 @@ function App() {
             >
               <FileDownload />
             </IconButton>
-          </Tooltip>
-          <Tooltip title="Export data">
+          </Tooltip> */}
+          <Tooltip title="Save changes to LSAF">
             <IconButton
-              color="inherit"
-              size="large"
-              edge="end"
-              onClick={() => {
-                setOpenInfo(true);
-              }}
-            >
-              <FileUpload />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Save changes">
-            <IconButton
-              color="inherit"
+              sx={{ color: "blue" }}
               size="large"
               edge="end"
               onClick={() => {
@@ -542,9 +854,21 @@ function App() {
               <Save />
             </IconButton>
           </Tooltip>
+          <Tooltip title="Save to a new Reporting Event on LSAF">
+            <IconButton
+              sx={{ color: "blue" }}
+              size="large"
+              edge="end"
+              onClick={() => {
+                setOpenInfo(true);
+              }}
+            >
+              <FolderCopy />
+            </IconButton>
+          </Tooltip>
           <Tooltip title="Information about this screen">
             <IconButton
-              color="inherit"
+              sx={{ color: "blue" }}
               size="large"
               edge="end"
               onClick={() => {
@@ -557,18 +881,12 @@ function App() {
         </Toolbar>
       </AppBar>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <TextField
-            sx={{ width: 600, flexGrow: 1 }}
-            label="Purpose (A1 cell)"
-            variant="outlined"
-          />
-        </Grid>
+        <Grid item xs={6}></Grid>
       </Grid>
       <Tabs
         value={tabValue}
         onChange={(event, newValue) => {
-          changeTabValue(newValue);
+          setTabValue(newValue);
         }}
         variant="scrollable"
         scrollButtons="auto"
@@ -584,7 +902,7 @@ function App() {
         <Tab label="Source Libname" id={"tab1"} sx={{ fontSize: 12 }} />
         <Tab label="Source Filename" id={"tab2"} sx={{ fontSize: 12 }} />
       </Tabs>
-      {showColumnInfo && <p>Column info</p>}
+
       {rows1 && cols1 && tabValue === 0 && (
         <DataGridPro
           rows={rows1}
@@ -595,19 +913,30 @@ function App() {
           onRowModesModelChange={handleRowModesModelChange1}
           onRowEditStop={handleRowEditStop}
           processRowUpdate={processRowUpdate1}
+          componentProps
           slots={{
             toolbar: EditToolbar,
           }}
           slotProps={{
             toolbar: { setRows1, setRowModesModel1 },
+            cell: {
+              onMouseEnter: openPopper,
+              onMouseLeave: closePopper,
+            },
           }}
           onCellEditStart={(params) => {
             console.log("cell", params);
-            setShowColumnInfo(true);
           }}
           onRowEditStart={(params) => {
             console.log("row", params);
-            setShowColumnInfo(true);
+          }}
+          sx={{
+            "& .MuiDataGrid-cell:hover": {
+              backgroundColor: "#e6fff2",
+            },
+            "& .Mui-focused": {
+              backgroundColor: "#e6fff2",
+            },
           }}
         />
       )}
@@ -626,6 +955,18 @@ function App() {
           }}
           slotProps={{
             toolbar: { setRows2, setRowModesModel2 },
+            cell: {
+              onMouseEnter: openPopper,
+              onMouseLeave: closePopper,
+            },
+          }}
+          sx={{
+            "& .MuiDataGrid-cell:hover": {
+              backgroundColor: "#e6fff2",
+            },
+            "& .Mui-focused": {
+              backgroundColor: "#e6fff2",
+            },
           }}
         />
       )}
@@ -644,6 +985,18 @@ function App() {
           }}
           slotProps={{
             toolbar: { setRows3, setRowModesModel3 },
+            cell: {
+              onMouseEnter: openPopper,
+              onMouseLeave: closePopper,
+            },
+          }}
+          sx={{
+            "& .MuiDataGrid-cell:hover": {
+              backgroundColor: "#e6fff2",
+            },
+            "& .Mui-focused": {
+              backgroundColor: "#e6fff2",
+            },
           }}
         />
       )}

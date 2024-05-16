@@ -20,7 +20,15 @@ export function InfoDialog(props) {
       <DialogTitle>Info about this screen</DialogTitle>
       <DialogContent>
         <ul>
-          <li>Info goes here</li>
+          <li>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://argenxbvba.sharepoint.com/:w:/r/sites/Biostatistics/_layouts/15/Doc.aspx?sourcedoc=%7B61C04304-8E39-4E4E-834F-B3E43B508DC5%7D&file=Fill%20in%20LOT%20sheet.docx&action=default&mobileredirect=true"
+            >
+              Open document about filling in the LOT
+            </a>
+          </li>
         </ul>
         <Tooltip title={"Email technical programmers"}>
           <Button
