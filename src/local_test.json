@@ -1,112 +1,124 @@
 {
   "purpose": "2009 adam datasets",
-  "libname": [{ "libname": "adam", "path": "/adam" }],
-  "filename": [{ "filename": "stuff1", "path": "/stuff1" }],
   "outputs": [
     {
-      "no": 1,
+      "num": 1,
+      "type": "Dataset",
       "dataset": "adsl",
       "program": "d_adsl",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 2,
+      "num": 2,
+      "type": "Dataset",
       "dataset": "adae",
       "program": "d_adae",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 3,
+      "num": 3,
+      "type": "Dataset",
       "dataset": "adaper",
       "program": "d_adaper",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 4,
+      "num": 4,
+      "type": "Dataset",
       "dataset": "adaperte",
       "program": "d_adaperte",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 5,
+      "num": 5,
+      "type": "Dataset",
       "dataset": "adcm",
       "program": "d_adcm",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 6,
+      "num": 6,
+      "type": "Dataset",
       "dataset": "adcmice",
       "program": "d_adcmice",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 7,
+      "num": 7,
+      "type": "Dataset",
       "dataset": "adcmncod",
       "program": "d_adcmncod",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 8,
+      "num": 8,
+      "type": "Dataset",
       "dataset": "adeg",
       "program": "d_adeg",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 9,
+      "num": 9,
+      "type": "Dataset",
       "dataset": "adfa",
       "program": "d_adfa",
       "section": null,
       "population": "EFF"
     },
     {
-      "no": 10,
+      "num": 10,
+      "type": "Dataset",
       "dataset": "adlb",
       "program": "d_adlb",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 11,
+      "num": 11,
+      "type": "Dataset",
       "dataset": "admh",
       "program": "d_admh",
       "section": null,
       "population": "SAF"
     },
     {
-      "no": 12,
+      "num": 12,
+      "type": "Dataset",
       "dataset": "adpd",
       "program": "d_adpd",
       "section": null,
       "population": "SAF"
-    },
+    }
+  ],
+  "libname": [{ "libname": "adam", "path": "/adam" }],
+  "filename": [{ "filename": "stuff1", "path": "/stuff1" }],
+  "qc": [
     {
-      "no": 13,
-      "dataset": "adqs",
-      "program": "d_adqs",
-      "section": null,
-      "population": "SAF"
-    },
+      "num": 1,
+      "qc_program": "adsl",
+      "qc": null,
+      "qc_programmer": "Phil Mason",
+      "due_date": "2024-06-28",
+      "qc_status": "in progress",
+      "qc_comments": "none"
+    }
+  ],
+  "manage": [
     {
-      "no": 14,
-      "dataset": "adrs",
-      "program": "d_adrs",
-      "section": null,
-      "population": "EFF"
-    },
-    {
-      "no": 15,
-      "dataset": "adtte",
-      "program": "d_adtte",
-      "section": null,
-      "population": "EFF"
+      "num": 1,
+      "parameters": "",
+      "programmer": "Phil Mason",
+      "comments": "",
+      "priority": 1,
+      "topline": true
     }
   ]
 }

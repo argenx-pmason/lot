@@ -1,7 +1,7 @@
 {
   "purpose": "2009 tables, listing & figures",
-  "source libname": [{ "libname": "adam2", "path": "/adam2" }],
-  "source filename": [{ "filename": "stuff3", "path": "/stuff3" }],
+  "libname": [{ "libname": "adam2", "path": "/adam2" }],
+  "filename": [{ "filename": "stuff3", "path": "/stuff3" }],
   "outputs": [
     {
       "section": "General characteristics",

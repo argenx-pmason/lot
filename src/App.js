@@ -44,6 +44,7 @@ import {
 // import Papa from "papaparse";
 import { InfoDialog } from "./components/InfoDialog";
 import userInfo from "./users.json";
+import local_test from "./local_test.json";
 
 function App() {
   LicenseInfo.setLicenseKey(
@@ -57,10 +58,18 @@ function App() {
         setRowModesModel2,
         setRows3,
         setRowModesModel3,
+        setRows4,
+        setRowModesModel4,
+        setRows5,
+        setRowModesModel5,
       } = props,
-      setRows = setRows1 || setRows2 || setRows3,
+      setRows = setRows1 || setRows2 || setRows3 || setRows4 || setRows5,
       setRowModesModel =
-        setRowModesModel1 || setRowModesModel2 || setRowModesModel3,
+        setRowModesModel1 ||
+        setRowModesModel2 ||
+        setRowModesModel3 ||
+        setRowModesModel4 ||
+        setRowModesModel5,
       handleClick = () => {
         const id = uuidv4();
         setRows((oldRows) => [
@@ -80,15 +89,14 @@ function App() {
         </Button>
         <GridToolbarColumnsButton />
         <GridToolbarFilterButton />
-        <GridToolbarDensitySelector
-          slotProps={{ tooltip: { title: "Change density" } }}
-        />
+        <GridToolbarDensitySelector />
         <GridToolbarExport />
       </GridToolbarContainer>
     );
   }
 
   const { href } = window.location,
+    mode = href.startsWith("http://localhost") ? "local" : "remote",
     [openInfo, setOpenInfo] = useState(false),
     types = ["Dataset", "Figure", "Listing", "Other", "Table"],
     users = userInfo
@@ -108,7 +116,6 @@ function App() {
     //   { id: "celerion", label: "Celerion" },
     // ],
     [tabValue, setTabValue] = useState(0),
-    [rows1, setRows1] = useState([]),
     renderCellExpand = (params) => {
       return (
         <GridCellExpand
@@ -117,7 +124,11 @@ function App() {
         />
       );
     },
+    valueGetter = (row) => {
+      return row && new Date(row.value);
+    },
     qc_status = ["Not yet started", "Not needed", "In progress", "Complete"],
+    [rows1, setRows1] = useState([]),
     cols1 = [
       {
         field: "type",
@@ -179,18 +190,6 @@ function App() {
         },
       },
       {
-        field: "Col_A",
-        headerName: "Extra Col A",
-        editable: true,
-        width: 80,
-      },
-      {
-        field: "Col_B",
-        headerName: "Extra Col B",
-        editable: true,
-        width: 80,
-      },
-      {
         field: "program",
         headerName: "Program",
         editable: true,
@@ -200,12 +199,6 @@ function App() {
         },
       },
       {
-        field: "qc_program",
-        headerName: "QC Program",
-        editable: true,
-        width: 120,
-      },
-      {
         field: "dataset",
         headerName: "Dataset",
         editable: true,
@@ -213,83 +206,6 @@ function App() {
         cellClassName: (params) => {
           if (!params.value && params.row.type === "Dataset") return "required";
         },
-      },
-      {
-        field: "parameters",
-        headerName: "Parameters",
-        editable: true,
-        width: 120,
-      },
-      {
-        field: "programmer",
-        headerName: "Programmer",
-        editable: true,
-        width: 200,
-        type: "singleSelect",
-        valueOptions: users,
-      },
-      {
-        field: "comments",
-        headerName: "Comments",
-        editable: true,
-        width: 300,
-        renderCell: renderCellExpand,
-      },
-      {
-        field: "qc",
-        headerName: "QC",
-        editable: true,
-        width: 80,
-        renderCell: (params) => {
-          const value = params.value,
-            isPass = [1, "1"].includes(value),
-            isFail = [0, "0"].includes(value);
-          return isPass ? "Pass" : isFail ? "Fail" : "?";
-        },
-      },
-      {
-        field: "qc_programmer",
-        headerName: "QC Programmer",
-        editable: true,
-        width: 200,
-        type: "singleSelect",
-        valueOptions: users,
-      },
-      {
-        field: "due_date",
-        headerName: "QC Due date",
-        editable: true,
-        width: 120,
-        type: "date",
-      },
-      {
-        field: "qc_status",
-        headerName: "QC Status",
-        editable: true,
-        width: 120,
-        type: "singleSelect",
-        valueOptions: qc_status,
-      },
-      {
-        field: "qc_comments",
-        headerName: "QC Comments",
-        editable: true,
-        width: 300,
-        renderCell: renderCellExpand,
-      },
-      {
-        field: "priority",
-        headerName: "Priority",
-        editable: true,
-        type: "number",
-        width: 80,
-      },
-      {
-        field: "topline",
-        headerName: "Topline Results",
-        editable: true,
-        type: "boolean",
-        width: 80,
       },
       {
         field: "actions",
@@ -478,9 +394,217 @@ function App() {
         },
       },
     ],
+    [rows4, setRows4] = React.useState([]),
+    cols4 = [
+      {
+        field: "num",
+        headerName: "Num",
+        editable: true,
+        width: 120,
+        cellClassName: (params) => {
+          if (
+            !params.value &&
+            ["Table", "Listing", "Figure"].includes(params.row.type)
+          )
+            return "required";
+        },
+      },
+      {
+        field: "qc_program",
+        headerName: "QC Program",
+        editable: true,
+        width: 120,
+      },
+      {
+        field: "qc",
+        headerName: "QC",
+        editable: true,
+        width: 80,
+        renderCell: (params) => {
+          const value = params.value,
+            isPass = [1, "1"].includes(value),
+            isFail = [0, "0"].includes(value);
+          return isPass ? "Pass" : isFail ? "Fail" : "?";
+        },
+      },
+      {
+        field: "qc_programmer",
+        headerName: "QC Programmer",
+        editable: true,
+        width: 200,
+        type: "singleSelect",
+        valueOptions: users,
+      },
+      {
+        field: "due_date",
+        headerName: "QC Due date",
+        editable: true,
+        width: 120,
+        type: "date",
+        valueGetter: valueGetter,
+      },
+      {
+        field: "qc_status",
+        headerName: "QC Status",
+        editable: true,
+        width: 120,
+        type: "singleSelect",
+        valueOptions: qc_status,
+      },
+      {
+        field: "qc_comments",
+        headerName: "QC Comments",
+        editable: true,
+        width: 300,
+        renderCell: renderCellExpand,
+      },
+      {
+        field: "actions",
+        type: "actions",
+        headerName: "Actions",
+        width: 100,
+        cellClassName: "actions",
+        getActions: ({ id }) => {
+          const isInEditMode = rowModesModel4[id]?.mode === GridRowModes.Edit;
+
+          if (isInEditMode) {
+            return [
+              <GridActionsCellItem
+                icon={<Save />}
+                label="Save"
+                sx={{
+                  color: "primary.main",
+                }}
+                onClick={handleSaveClick4(id)}
+              />,
+              <GridActionsCellItem
+                icon={<Cancel />}
+                label="Cancel"
+                className="textPrimary"
+                onClick={handleCancelClick4(id)}
+                color="inherit"
+              />,
+            ];
+          }
+          return [
+            <GridActionsCellItem
+              icon={<Edit />}
+              label="Edit"
+              className="textPrimary"
+              onClick={handleEditClick4(id)}
+              color="inherit"
+            />,
+            <GridActionsCellItem
+              icon={<Delete />}
+              label="Delete"
+              onClick={handleDeleteClick4(id)}
+              color="inherit"
+            />,
+          ];
+        },
+      },
+    ],
+    [rows5, setRows5] = React.useState([]),
+    cols5 = [
+      {
+        field: "num",
+        headerName: "Num",
+        editable: true,
+        width: 120,
+        cellClassName: (params) => {
+          if (
+            !params.value &&
+            ["Table", "Listing", "Figure"].includes(params.row.type)
+          )
+            return "required";
+        },
+      },
+      {
+        field: "programmer",
+        headerName: "Programmer",
+        editable: true,
+        width: 200,
+        type: "singleSelect",
+        valueOptions: users,
+      },
+      {
+        field: "priority",
+        headerName: "Priority",
+        editable: true,
+        type: "number",
+        width: 80,
+      },
+      {
+        field: "topline",
+        headerName: "Topline Results",
+        editable: true,
+        type: "boolean",
+        width: 80,
+      },
+      {
+        field: "comments",
+        headerName: "Comments",
+        editable: true,
+        width: 300,
+        renderCell: renderCellExpand,
+      },
+      {
+        field: "parameters",
+        headerName: "Parameters",
+        editable: true,
+        width: 120,
+      },
+      {
+        field: "actions",
+        type: "actions",
+        headerName: "Actions",
+        width: 100,
+        cellClassName: "actions",
+        getActions: ({ id }) => {
+          const isInEditMode = rowModesModel5[id]?.mode === GridRowModes.Edit;
+
+          if (isInEditMode) {
+            return [
+              <GridActionsCellItem
+                icon={<Save />}
+                label="Save"
+                sx={{
+                  color: "primary.main",
+                }}
+                onClick={handleSaveClick5(id)}
+              />,
+              <GridActionsCellItem
+                icon={<Cancel />}
+                label="Cancel"
+                className="textPrimary"
+                onClick={handleCancelClick5(id)}
+                color="inherit"
+              />,
+            ];
+          }
+          return [
+            <GridActionsCellItem
+              icon={<Edit />}
+              label="Edit"
+              className="textPrimary"
+              onClick={handleEditClick5(id)}
+              color="inherit"
+            />,
+            <GridActionsCellItem
+              icon={<Delete />}
+              label="Delete"
+              onClick={handleDeleteClick5(id)}
+              color="inherit"
+            />,
+          ];
+        },
+      },
+    ],
     [rowModesModel1, setRowModesModel1] = React.useState({}),
     [rowModesModel2, setRowModesModel2] = React.useState({}),
     [rowModesModel3, setRowModesModel3] = React.useState({}),
+    [rowModesModel4, setRowModesModel4] = React.useState({}),
+    [rowModesModel5, setRowModesModel5] = React.useState({}),
     handleRowEditStop = (params, event) => {
       if (params.reason === GridRowEditStopReasons.rowFocusOut) {
         event.defaultMuiPrevented = true;
@@ -504,6 +628,18 @@ function App() {
         [id]: { mode: GridRowModes.Edit },
       });
     },
+    handleEditClick4 = (id) => () => {
+      setRowModesModel4({
+        ...rowModesModel4,
+        [id]: { mode: GridRowModes.Edit },
+      });
+    },
+    handleEditClick5 = (id) => () => {
+      setRowModesModel5({
+        ...rowModesModel5,
+        [id]: { mode: GridRowModes.Edit },
+      });
+    },
     handleSaveClick1 = (id) => () => {
       setRowModesModel1({
         ...rowModesModel1,
@@ -522,6 +658,18 @@ function App() {
         [id]: { mode: GridRowModes.View },
       });
     },
+    handleSaveClick4 = (id) => () => {
+      setRowModesModel4({
+        ...rowModesModel4,
+        [id]: { mode: GridRowModes.View },
+      });
+    },
+    handleSaveClick5 = (id) => () => {
+      setRowModesModel5({
+        ...rowModesModel5,
+        [id]: { mode: GridRowModes.View },
+      });
+    },
     handleDeleteClick1 = (id) => () => {
       setRows1(rows1.filter((row) => row.id !== id));
     },
@@ -530,6 +678,12 @@ function App() {
     },
     handleDeleteClick3 = (id) => () => {
       setRows3(rows3.filter((row) => row.id !== id));
+    },
+    handleDeleteClick4 = (id) => () => {
+      setRows4(rows4.filter((row) => row.id !== id));
+    },
+    handleDeleteClick5 = (id) => () => {
+      setRows5(rows5.filter((row) => row.id !== id));
     },
     handleCancelClick1 = (id) => () => {
       setRowModesModel1({
@@ -561,6 +715,26 @@ function App() {
         setRows3(rows3.filter((row) => row.id !== id));
       }
     },
+    handleCancelClick4 = (id) => () => {
+      setRowModesModel4({
+        ...rowModesModel4,
+        [id]: { mode: GridRowModes.View, ignoreModifications: true },
+      });
+      const editedRow = rows4.find((row) => row.id === id);
+      if (editedRow.isNew) {
+        setRows4(rows4.filter((row) => row.id !== id));
+      }
+    },
+    handleCancelClick5 = (id) => () => {
+      setRowModesModel5({
+        ...rowModesModel5,
+        [id]: { mode: GridRowModes.View, ignoreModifications: true },
+      });
+      const editedRow = rows5.find((row) => row.id === id);
+      if (editedRow.isNew) {
+        setRows5(rows5.filter((row) => row.id !== id));
+      }
+    },
     processRowUpdate1 = (newRow) => {
       const updatedRow = { ...newRow, isNew: false };
       setRows1(rows1.map((row) => (row.id === newRow.id ? updatedRow : row)));
@@ -576,6 +750,16 @@ function App() {
       setRows3(rows3.map((row) => (row.id === newRow.id ? updatedRow : row)));
       return updatedRow;
     },
+    processRowUpdate4 = (newRow) => {
+      const updatedRow = { ...newRow, isNew: false };
+      setRows4(rows4.map((row) => (row.id === newRow.id ? updatedRow : row)));
+      return updatedRow;
+    },
+    processRowUpdate5 = (newRow) => {
+      const updatedRow = { ...newRow, isNew: false };
+      setRows5(rows5.map((row) => (row.id === newRow.id ? updatedRow : row)));
+      return updatedRow;
+    },
     handleRowModesModelChange1 = (newRowModesModel) => {
       setRowModesModel1(newRowModesModel);
     },
@@ -584,6 +768,12 @@ function App() {
     },
     handleRowModesModelChange3 = (newRowModesModel) => {
       setRowModesModel3(newRowModesModel);
+    },
+    handleRowModesModelChange4 = (newRowModesModel) => {
+      setRowModesModel4(newRowModesModel);
+    },
+    handleRowModesModelChange5 = (newRowModesModel) => {
+      setRowModesModel5(newRowModesModel);
     },
     [columnInfo, setColumnInfo] = useState("hover over a column to get help"),
     [purpose, setPurpose] = useState(""),
@@ -595,12 +785,10 @@ function App() {
             console.log(`${text.length} characters read from file ${fileName}`);
             const obj = JSON.parse(text);
             setRows1(obj["outputs"].map((row) => ({ id: uuidv4(), ...row })));
-            setRows2(
-              obj["source libname"].map((row) => ({ id: uuidv4(), ...row }))
-            );
-            setRows3(
-              obj["source filename"].map((row) => ({ id: uuidv4(), ...row }))
-            );
+            setRows2(obj["libname"].map((row) => ({ id: uuidv4(), ...row })));
+            setRows3(obj["filename"].map((row) => ({ id: uuidv4(), ...row })));
+            setRows4(obj["qc"].map((row) => ({ id: uuidv4(), ...row })));
+            setRows5(obj["manage"].map((row) => ({ id: uuidv4(), ...row })));
             setPurpose(obj["purpose"]);
           });
         } else {
@@ -608,6 +796,18 @@ function App() {
           setRows1([]);
         }
       });
+    },
+    saveToLsaf = () => {
+      //TODO: save the data to LSAF
+      const toSave = {
+        purpose: purpose,
+        outputs: rows1,
+        libname: rows2,
+        filename: rows3,
+        qc: rows4,
+        manage: rows5,
+      };
+      console.log("toSave", toSave);
     },
     isOverflown = (element) => {
       return (
@@ -778,6 +978,7 @@ function App() {
           <Box sx={{ width: 100 }}> </Box>
           <Autocomplete
             options={reportingEvents}
+            isOptionEqualToValue={(option, value) => option.id === value.id}
             sx={{
               m: 0.5,
               mt: 1,
@@ -792,7 +993,29 @@ function App() {
               if (reason === null) return;
               const jsonFile = reason.id + ".json",
                 localUrl = `./${jsonFile}`;
-              getJsonFile(localUrl);
+              if (mode === "remote") {
+                getJsonFile(localUrl);
+              } else {
+                console.log(`using local_test.json`);
+                const obj = local_test;
+                setRows1(
+                  obj["outputs"].map((row) => ({ id: uuidv4(), ...row }))
+                );
+                setRows2(
+                  obj["libname"].map((row) => ({ id: uuidv4(), ...row }))
+                );
+                setRows3(
+                  obj["filename"].map((row) => ({
+                    id: uuidv4(),
+                    ...row,
+                  }))
+                );
+                setRows4(obj["qc"].map((row) => ({ id: uuidv4(), ...row })));
+                setRows5(
+                  obj["manage"].map((row) => ({ id: uuidv4(), ...row }))
+                );
+                setPurpose(obj["purpose"]);
+              }
             }}
           />
           <TextField
@@ -810,13 +1033,6 @@ function App() {
               setPurpose(event.target.value);
             }}
           />
-          <Typography
-            align="center"
-            variant="body2"
-            sx={{ color: "blue", flexGrow: 0.5 }}
-          >
-            {columnInfo}
-          </Typography>
           {/* <Autocomplete
             options={CROs}
             sx={{ m: 0.5, width: 300, backgroundColor: "#ffffe6" }}
@@ -848,7 +1064,7 @@ function App() {
               size="large"
               edge="end"
               onClick={() => {
-                setOpenInfo(true);
+                saveToLsaf();
               }}
             >
               <Save />
@@ -901,8 +1117,9 @@ function App() {
         />
         <Tab label="Source Libname" id={"tab1"} sx={{ fontSize: 12 }} />
         <Tab label="Source Filename" id={"tab2"} sx={{ fontSize: 12 }} />
+        <Tab label="QC" id={"tab3"} sx={{ fontSize: 12 }} />
+        <Tab label="Manage" id={"tab4"} sx={{ fontSize: 12 }} />
       </Tabs>
-
       {rows1 && cols1 && tabValue === 0 && (
         <DataGridPro
           rows={rows1}
@@ -1000,6 +1217,87 @@ function App() {
           }}
         />
       )}
+      {rows4 && cols4 && tabValue === 3 && (
+        <DataGridPro
+          rows={rows4}
+          columns={cols4}
+          density={"compact"}
+          editMode="row"
+          rowModesModel={rowModesModel4}
+          onRowModesModelChange={handleRowModesModelChange4}
+          onRowEditStop={handleRowEditStop}
+          processRowUpdate={processRowUpdate4}
+          componentProps
+          slots={{
+            toolbar: EditToolbar,
+          }}
+          slotProps={{
+            toolbar: { setRows4, setRowModesModel4 },
+            cell: {
+              onMouseEnter: openPopper,
+              onMouseLeave: closePopper,
+            },
+          }}
+          onCellEditStart={(params) => {
+            console.log("cell", params);
+          }}
+          onRowEditStart={(params) => {
+            console.log("row", params);
+          }}
+          sx={{
+            "& .MuiDataGrid-cell:hover": {
+              backgroundColor: "#e6fff2",
+            },
+            "& .Mui-focused": {
+              backgroundColor: "#e6fff2",
+            },
+          }}
+        />
+      )}{" "}
+      {rows5 && cols5 && tabValue === 4 && (
+        <DataGridPro
+          rows={rows5}
+          columns={cols5}
+          density={"compact"}
+          editMode="row"
+          rowModesModel={rowModesModel5}
+          onRowModesModelChange={handleRowModesModelChange5}
+          onRowEditStop={handleRowEditStop}
+          processRowUpdate={processRowUpdate5}
+          componentProps
+          slots={{
+            toolbar: EditToolbar,
+          }}
+          slotProps={{
+            toolbar: { setRows5, setRowModesModel5 },
+            cell: {
+              onMouseEnter: openPopper,
+              onMouseLeave: closePopper,
+            },
+          }}
+          onCellEditStart={(params) => {
+            console.log("cell", params);
+          }}
+          onRowEditStart={(params) => {
+            console.log("row", params);
+          }}
+          sx={{
+            "& .MuiDataGrid-cell:hover": {
+              backgroundColor: "#e6fff2",
+            },
+            "& .Mui-focused": {
+              backgroundColor: "#e6fff2",
+            },
+          }}
+        />
+      )}
+      <Typography
+        align="left"
+        variant="body2"
+        sx={{ color: "blue", flexGrow: 0.5 }}
+      >
+        {columnInfo}
+      </Typography>
       <InfoDialog openInfo={openInfo} setOpenInfo={setOpenInfo} href={href} />
     </Box>
   );

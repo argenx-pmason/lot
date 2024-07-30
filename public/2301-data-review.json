@@ -1,7 +1,7 @@
 {
   "purpose": "2301 data review",
-  "source libname": [{ "libname": "sdtm2", "path": "/sdtm2" }],
-  "source filename": [{ "filename": "stuff4", "path": "/stuff4" }],
+  "libname": [{ "libname": "sdtm2", "path": "/sdtm2" }],
+  "filename": [{ "filename": "stuff4", "path": "/stuff4" }],
   "outputs": [
     { "num": "1", "program": "d_adsl", "dataset": "adsl" },
     { "num": "2", "program": "d_adft", "dataset": "adft" },

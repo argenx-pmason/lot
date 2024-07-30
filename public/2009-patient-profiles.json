@@ -1,7 +1,7 @@
 {
   "purpose": "2009 patient profiles",
-  "source libname": [{ "libname": "sdtm", "path": "/sdtm" }],
-  "source filename": [{ "filename": "stuff2", "path": "/stuff2" }],
+  "libname": [{ "libname": "sdtm", "path": "/sdtm" }],
+  "filename": [{ "filename": "stuff2", "path": "/stuff2" }],
   "outputs": [
     {
       "no": 1,
