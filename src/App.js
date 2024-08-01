@@ -11,7 +11,6 @@ import {
   Typography,
   Autocomplete,
   TextField,
-  Grid,
   Tooltip,
   IconButton,
   Popper,
@@ -33,6 +32,7 @@ import {
 import {
   Add,
   Edit,
+  Remove,
   Delete,
   Save,
   Cancel,
@@ -48,7 +48,7 @@ import local_test from "./local_test.json";
 
 function App() {
   LicenseInfo.setLicenseKey(
-    "369a1eb75b405178b0ae6c2b51263cacTz03MTMzMCxFPTE3MjE3NDE5NDcwMDAsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI="
+    "6b1cacb920025860cc06bcaf75ee7a66Tz05NDY2MixFPTE3NTMyNTMxMDQwMDAsUz1wcm8sTE09c3Vic2NyaXB0aW9uLEtWPTI="
   );
   function EditToolbar(props) {
     const {
@@ -104,6 +104,8 @@ function App() {
       .map((user) => {
         return user.name;
       }),
+    [fontSize, setFontSize] = useState(10),
+    adjustment = 160,
     reportingEvents = [
       { id: "2009-adam", label: "113-bp-2009 Adam" },
       { id: "2009-patient-profiles", label: "113-bp-2009 Patient Profiles" },
@@ -845,6 +847,16 @@ function App() {
       comments: "Comments about the output",
       Col_A: "Extra column A",
       Col_B: "Extra column B",
+      qc_program: "name of program used for QC",
+      qc: "?",
+      qc_programmer: "Name of person doing QC",
+      due_date: "Due date for QC to be completed",
+      qc_status:
+        "Status of QC: Not yet started, Not needed, In progress, Complete",
+      qc_comments: "Comments about the QC that was done - key points",
+      programmer: "Name of programmer assigned to this output number",
+      priority: "Relative priority compared to other programming tasks",
+      topline: "Part of topline results? Yes or No",
     },
     GridCellExpand = React.memo(function GridCellExpand(props) {
       const { width, value } = props;
@@ -957,10 +969,14 @@ function App() {
   //   console.log("acceptedFiles", acceptedFiles);
   // }, [acceptedFiles]);
 
+  useEffect(() => {
+    setFontSize(Number(localStorage.getItem("fontSize")) || 10);
+  }, []);
+
   return (
     <Box
       sx={{
-        height: 800,
+        height: window.innerHeight - adjustment,
         width: "100%",
         "& .actions": {
           color: "text.secondary",
@@ -970,12 +986,20 @@ function App() {
         },
       }}
     >
-      <AppBar position="sticky">
-        <Toolbar variant="dense" sx={{ backgroundColor: "#ccebff" }}>
-          <Typography variant="h6" gutterBottom sx={{ color: "blue" }}>
-            LOT Editor
-          </Typography>
-          <Box sx={{ width: 100 }}> </Box>
+      <AppBar position="fixed">
+        <Toolbar variant="dense" sx={{ backgroundColor: "#cccccc" }}>
+          <Box
+            sx={{
+              backgroundColor: "#eeeeee",
+              color: "green",
+              fontWeight: "bold",
+              boxShadow: 3,
+              fontSize: fontSize + 2,
+              mr: 2,
+            }}
+          >
+            &nbsp;&nbsp;LOT Editor&nbsp;&nbsp;
+          </Box>
           <Autocomplete
             options={reportingEvents}
             isOptionEqualToValue={(option, value) => option.id === value.id}
@@ -983,7 +1007,8 @@ function App() {
               m: 0.5,
               mt: 1,
               width: 300,
-              backgroundColor: "#ffffe6",
+              backgroundColor: "##f0f0f0",
+              fontSize: fontSize + 2,
             }}
             renderInput={(params) => (
               <TextField {...params} label="Reporting Event" />
@@ -1024,7 +1049,8 @@ function App() {
               mt: 1,
               width: 600,
               flexGrow: 1,
-              backgroundColor: "#ffffe6",
+              backgroundColor: "#f0f0f0",
+              fontSize: fontSize + 2,
             }}
             label="Purpose (A1 cell)"
             variant="outlined"
@@ -1039,6 +1065,31 @@ function App() {
             renderInput={(params) => <TextField {...params} label="CRO" />}
           /> */}
           <Box sx={{ flexGrow: 1 }}> </Box>
+          <Tooltip title="Smaller font">
+            <IconButton
+              color="primary"
+              size="small"
+              onClick={() => {
+                setFontSize(fontSize - 1);
+                localStorage.setItem("fontSize", fontSize - 1);
+              }}
+            >
+              <Remove />
+            </IconButton>
+          </Tooltip>
+          &nbsp;{fontSize}&nbsp;
+          <Tooltip title="Larger font">
+            <IconButton
+              color="primary"
+              size="small"
+              onClick={() => {
+                setFontSize(fontSize + 1);
+                localStorage.setItem("fontSize", fontSize + 1);
+              }}
+            >
+              <Add />
+            </IconButton>
+          </Tooltip>
           {/* <div {...getRootProps({ className: "dropzone" })}>
             <input {...getInputProps()} />
             <p>Drag 'n' drop some files here</p>
@@ -1060,7 +1111,7 @@ function App() {
           </Tooltip> */}
           <Tooltip title="Save changes to LSAF">
             <IconButton
-              sx={{ color: "blue" }}
+              color="info"
               size="large"
               edge="end"
               onClick={() => {
@@ -1072,7 +1123,7 @@ function App() {
           </Tooltip>
           <Tooltip title="Save to a new Reporting Event on LSAF">
             <IconButton
-              sx={{ color: "blue" }}
+              color="info"
               size="large"
               edge="end"
               onClick={() => {
@@ -1084,7 +1135,7 @@ function App() {
           </Tooltip>
           <Tooltip title="Information about this screen">
             <IconButton
-              sx={{ color: "blue" }}
+              color="info"
               size="large"
               edge="end"
               onClick={() => {
@@ -1096,9 +1147,6 @@ function App() {
           </Tooltip>
         </Toolbar>
       </AppBar>
-      <Grid container spacing={2}>
-        <Grid item xs={6}></Grid>
-      </Grid>
       <Tabs
         value={tabValue}
         onChange={(event, newValue) => {
@@ -1107,6 +1155,7 @@ function App() {
         variant="scrollable"
         scrollButtons="auto"
         textColor="secondary"
+        sx={{ mt: 8 }}
       >
         <Tab
           label="Outputs"
@@ -1147,7 +1196,15 @@ function App() {
           onRowEditStart={(params) => {
             console.log("row", params);
           }}
+          getRowHeight={() => "auto"}
+          pageSizeOptions={[25, 100, 1000]}
+          pagination
           sx={{
+            width: window.innerWidth,
+            height: window.innerHeight - adjustment,
+            fontWeight: `fontSize=5`,
+            fontSize: { fontSize },
+            padding: 1,
             "& .MuiDataGrid-cell:hover": {
               backgroundColor: "#e6fff2",
             },
@@ -1177,7 +1234,13 @@ function App() {
               onMouseLeave: closePopper,
             },
           }}
+          getRowHeight={() => "auto"}
           sx={{
+            width: window.innerWidth,
+            height: window.innerHeight - adjustment,
+            fontWeight: `fontSize=5`,
+            fontSize: { fontSize },
+            padding: 1,
             "& .MuiDataGrid-cell:hover": {
               backgroundColor: "#e6fff2",
             },
@@ -1207,7 +1270,13 @@ function App() {
               onMouseLeave: closePopper,
             },
           }}
+          getRowHeight={() => "auto"}
           sx={{
+            width: window.innerWidth,
+            height: window.innerHeight - adjustment,
+            fontWeight: `fontSize=5`,
+            fontSize: { fontSize },
+            padding: 1,
             "& .MuiDataGrid-cell:hover": {
               backgroundColor: "#e6fff2",
             },
@@ -1244,7 +1313,13 @@ function App() {
           onRowEditStart={(params) => {
             console.log("row", params);
           }}
+          getRowHeight={() => "auto"}
           sx={{
+            width: window.innerWidth,
+            height: window.innerHeight - adjustment,
+            fontWeight: `fontSize=5`,
+            fontSize: { fontSize },
+            padding: 1,
             "& .MuiDataGrid-cell:hover": {
               backgroundColor: "#e6fff2",
             },
@@ -1281,7 +1356,13 @@ function App() {
           onRowEditStart={(params) => {
             console.log("row", params);
           }}
+          getRowHeight={() => "auto"}
           sx={{
+            width: window.innerWidth,
+            height: window.innerHeight - adjustment,
+            fontWeight: `fontSize=5`,
+            fontSize: { fontSize },
+            padding: 1,
             "& .MuiDataGrid-cell:hover": {
               backgroundColor: "#e6fff2",
             },
@@ -1291,13 +1372,7 @@ function App() {
           }}
         />
       )}
-      <Typography
-        align="left"
-        variant="body2"
-        sx={{ color: "blue", flexGrow: 0.5 }}
-      >
-        {columnInfo}
-      </Typography>
+      <Box sx={{ color: "blue", flexGrow: 0.5 }}>{columnInfo}</Box>
       <InfoDialog openInfo={openInfo} setOpenInfo={setOpenInfo} href={href} />
     </Box>
   );
