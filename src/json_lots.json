@@ -1,0 +1,639 @@
+[
+  {
+    "compound": "argx-113",
+    "indication": "bp",
+    "study": "argx-113-2009",
+    "path": "/clinical/argx-113/bp/argx-113-2009/biostat/staging/patient_profiles/documents/2009-patient-profiles.json",
+    "repevent": "/clinical/argx-113/bp/argx-113-2009/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "bp",
+    "study": "argx-113-2009",
+    "path": "/clinical/argx-113/bp/argx-113-2009/biostat/staging/patient_profiles_final/documents/2009-patient-profiles-final.json",
+    "repevent": "/clinical/argx-113/bp/argx-113-2009/patient_profiles_final"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "bp",
+    "study": "argx-113-2010",
+    "path": "/clinical/argx-113/bp/argx-113-2010/biostat/staging/patient_profiles/documents/2010-patient-profiles.json",
+    "repevent": "/clinical/argx-113/bp/argx-113-2010/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/fda_2024/documents/1802-fda-2024.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/fda_2024"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/ma2023/documents/1802-ma2023.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/ma2023"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/ma2024/documents/1802-ma2024.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/ma2024"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/ma2024_part2/documents/1802-ma2024-part2.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/ma2024_part2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/pmda_20240619/documents/1802-pmda-20240619.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/pmda_20240619"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/pmda_20240624/documents/1802-pmda-20240624.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/pmda_20240624"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/pmda_20240726/documents/1802-pmda-20240726.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/pmda_20240726"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/pmda_r_figures/documents/1802-pmda-r-figures.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/pmda_r_figures"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/zai_nmpa_20240708/qc_adam/documents/1802-adam.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/zai_nmpa_20240708/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1802",
+    "path": "/clinical/argx-113/cidp/argx-113-1802/biostat/staging/zai_nmpa_20240708/qc_tlf/documents/1802-tlf.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1802/zai_nmpa_20240708/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/final_r_figures_ia2/documents/1902-final-r-figures-ia2.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/final_r_figures_ia2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/final_r_figures_ia2_china/documents/1902-final-r-figures-ia2-china.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/final_r_figures_ia2_china"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/final_r_figures_ia2_eastasia/documents/1902-final-r-figures-ia2-eastasia.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/final_r_figures_ia2_eastasia"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/ia2_adhoc/documents/1902-ia2-adhoc.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/ia2_adhoc"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/ia2_final/qc_adam/documents/1902-adam.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/ia2_final/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/ia2_final/qc_tlf/documents/1902-tlf.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/ia2_final/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/ia2_posthoc/documents/1902-ia2-posthoc.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/ia2_posthoc"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/substudy_ia1_china_figures/documents/1902-substudy-ia1-china-figures.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/substudy_ia1_china_figures"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-1902",
+    "path": "/clinical/argx-113/cidp/argx-113-1902/biostat/staging/substudy_ia1_eastasia_figures/documents/1902-substudy-ia1-eastasia-figures.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-1902/substudy_ia1_eastasia_figures"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "cidp",
+    "study": "argx-113-9301",
+    "path": "/clinical/argx-113/cidp/argx-113-9301/biostat/staging/posthoc/documents/9301-posthoc.json",
+    "repevent": "/clinical/argx-113/cidp/argx-113-9301/posthoc"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "hv",
+    "study": "argx-113-2201",
+    "path": "/clinical/argx-113/hv/argx-113-2201/biostat/staging/final/qc_adam/documents/2201-adam.json",
+    "repevent": "/clinical/argx-113/hv/argx-113-2201/final/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "iim",
+    "study": "argx-113-2007",
+    "path": "/clinical/argx-113/iim/argx-113-2007/biostat/staging/testrun1/documents/2007-testrun1.json",
+    "repevent": "/clinical/argx-113/iim/argx-113-2007/testrun1"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "iim",
+    "study": "argx-113-2007",
+    "path": "/clinical/argx-113/iim/argx-113-2007/biostat/staging/testrun1/qc_adam/documents/2007-adam.json",
+    "repevent": "/clinical/argx-113/iim/argx-113-2007/testrun1/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "iim",
+    "study": "argx-113-2007",
+    "path": "/clinical/argx-113/iim/argx-113-2007/biostat/staging/testrun2/figures/documents/2007-figures.json",
+    "repevent": "/clinical/argx-113/iim/argx-113-2007/testrun2/figures"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "iim",
+    "study": "argx-113-2007",
+    "path": "/clinical/argx-113/iim/argx-113-2007/biostat/staging/testrun2/qc_adam/documents/2007-adam.json",
+    "repevent": "/clinical/argx-113/iim/argx-113-2007/testrun2/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "iim",
+    "study": "argx-113-2007",
+    "path": "/clinical/argx-113/iim/argx-113-2007/biostat/staging/testrun2/qc_tlf/documents/2007-tlf.json",
+    "repevent": "/clinical/argx-113/iim/argx-113-2007/testrun2/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "iim",
+    "study": "argx-113-2011",
+    "path": "/clinical/argx-113/iim/argx-113-2011/biostat/staging/patient_profiles/documents/2011-patient-profiles.json",
+    "repevent": "/clinical/argx-113/iim/argx-113-2011/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "ln",
+    "study": "argx-113-2202",
+    "path": "/clinical/argx-113/ln/argx-113-2202/biostat/staging/patient_profiles/documents/2202-patient-profiles.json",
+    "repevent": "/clinical/argx-113/ln/argx-113-2202/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-0000",
+    "path": "/clinical/argx-113/mg/argx-113-0000/biostat/staging/ma2024/documents/0000-ma2024.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-0000/ma2024"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-1704",
+    "path": "/clinical/argx-113/mg/argx-113-1704/biostat/staging/ma2022/documents/1704-ma2022.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-1704/ma2022"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-1704",
+    "path": "/clinical/argx-113/mg/argx-113-1704/biostat/staging/ma2024/documents/1704-ma2024.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-1704/ma2024"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2002",
+    "path": "/clinical/argx-113/mg/argx-113-2002/biostat/staging/exploratory/documents/2002-explo.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2002/exploratory"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2002",
+    "path": "/clinical/argx-113/mg/argx-113-2002/biostat/staging/ia2/documents/2002-ia2.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2002/ia2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2002",
+    "path": "/clinical/argx-113/mg/argx-113-2002/biostat/staging/ia3/qc_adam/documents/2002-adam.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2002/ia3/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2002",
+    "path": "/clinical/argx-113/mg/argx-113-2002/biostat/staging/ia3/qc_tlf/documents/2002-tlf.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2002/ia3/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2002",
+    "path": "/clinical/argx-113/mg/argx-113-2002/biostat/staging/patient_profiles/documents/2002-patient-profiles.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2002/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2006",
+    "path": "/clinical/argx-113/mg/argx-113-2006/biostat/staging/final/qc_adam/documents/2006-adam.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2006/final/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-2006",
+    "path": "/clinical/argx-113/mg/argx-113-2006/biostat/staging/patient_profiles/documents/2006-patient-profiles.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-2006/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9025",
+    "path": "/clinical/argx-113/mg/argx-113-9025/biostat/staging/final/qc_tlf/documents/9025-tlf.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9025/final/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9025",
+    "path": "/clinical/argx-113/mg/argx-113-9025/biostat/staging/pmda_1yr/documents/9025-pmda-1yr.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9025/pmda_1yr"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9025",
+    "path": "/clinical/argx-113/mg/argx-113-9025/biostat/staging/posthoc/documents/9025-posthoc.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9025/posthoc"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9031",
+    "path": "/clinical/argx-113/mg/argx-113-9031/biostat/staging/ema/documents/9031-ema.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9031/ema"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9031",
+    "path": "/clinical/argx-113/mg/argx-113-9031/biostat/staging/iss_20220131/qc_adam_pb2/documents/9031-adam-pb2.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9031/iss_20220131/qc_adam_pb2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9031",
+    "path": "/clinical/argx-113/mg/argx-113-9031/biostat/staging/iss_20220131/qc_tlf/documents/9031-tlf.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9031/iss_20220131/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9031",
+    "path": "/clinical/argx-113/mg/argx-113-9031/biostat/staging/ma2022/documents/9031-ma2022.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9031/ma2022"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9041",
+    "path": "/clinical/argx-113/mg/argx-113-9041/biostat/staging/dsmb/documents/9041-dsmb.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9041/dsmb"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9041",
+    "path": "/clinical/argx-113/mg/argx-113-9041/biostat/staging/final_adam/documents/9041-final-adam.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9041/final_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9041",
+    "path": "/clinical/argx-113/mg/argx-113-9041/biostat/staging/ma2023/documents/9041-ma2023.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9041/ma2023"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mg",
+    "study": "argx-113-9041",
+    "path": "/clinical/argx-113/mg/argx-113-9041/biostat/staging/ma2024/documents/9041-ma2024.json",
+    "repevent": "/clinical/argx-113/mg/argx-113-9041/ma2024"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "mn",
+    "study": "argx-113-2203",
+    "path": "/clinical/argx-113/mn/argx-113-2203/biostat/staging/patient_profiles/documents/2203-patient-profiles.json",
+    "repevent": "/clinical/argx-113/mn/argx-113-2203/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-1904",
+    "path": "/clinical/argx-113/pemphigus/argx-113-1904/biostat/staging/final/adhoc_immu_china/documents/1904-adhoc-immu-china.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-1904/final/adhoc_immu_china"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-1905",
+    "path": "/clinical/argx-113/pemphigus/argx-113-1905/biostat/staging/final/adhoc_immu_china/documents/1905-adhoc-immu-china.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-1905/final/adhoc_immu_china"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-1905",
+    "path": "/clinical/argx-113/pemphigus/argx-113-1905/biostat/staging/final/qc_tlf/documents/1905-tlf.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-1905/final/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-1905",
+    "path": "/clinical/argx-113/pemphigus/argx-113-1905/biostat/staging/narratives/documents/1905-narratives.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-1905/narratives"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9202",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9202/biostat/staging/final/qc_adam/documents/9202-adam.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9202/final/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9202",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9202/biostat/staging/final/qc_adam_pb1/documents/9202-adam-pb1.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9202/final/qc_adam_pb1"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9202",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9202/biostat/staging/final/qc_adam_pb2/documents/9202-adam-pb2.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9202/final/qc_adam_pb2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9202",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9202/biostat/staging/final/qc_tlf_pb1/documents/9202-tlf-pb1.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9202/final/qc_tlf_pb1"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9202",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9202/biostat/staging/final/qc_tlf_pb2/documents/9202-tlf-pb2.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9202/final/qc_tlf_pb2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9202",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9202/biostat/staging/testrun1/qc_tlf_pb2/documents/9202-tlf-pb2.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9202/testrun1/qc_tlf_pb2"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9203",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9203/biostat/staging/final/qc_adam/documents/9203-adam.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9203/final/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9203",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9203/biostat/staging/final/qc_tlf/documents/9203-tlf.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9203/final/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "pemphigus",
+    "study": "argx-113-9203",
+    "path": "/clinical/argx-113/pemphigus/argx-113-9203/biostat/staging/testrun1/qc_adam/documents/9203-adam.json",
+    "repevent": "/clinical/argx-113/pemphigus/argx-113-9203/testrun1/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "sjogren",
+    "study": "argx-113-2106",
+    "path": "/clinical/argx-113/sjogren/argx-113-2106/biostat/staging/adhoc/documents/2106-adhoc.json",
+    "repevent": "/clinical/argx-113/sjogren/argx-113-2106/adhoc"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "sjogren",
+    "study": "argx-113-2106",
+    "path": "/clinical/argx-113/sjogren/argx-113-2106/biostat/staging/final_r_figures/documents/2106-final-r-figures.json",
+    "repevent": "/clinical/argx-113/sjogren/argx-113-2106/final_r_figures"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "sjogren",
+    "study": "argx-113-2211",
+    "path": "/clinical/argx-113/sjogren/argx-113-2211/biostat/staging/adhoc_ia1/documents/2211-adhoc-ia1.json",
+    "repevent": "/clinical/argx-113/sjogren/argx-113-2211/adhoc_ia1"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "sjogren",
+    "study": "argx-113-2211",
+    "path": "/clinical/argx-113/sjogren/argx-113-2211/biostat/staging/ia1/qc_adam/documents/2211-adam.json",
+    "repevent": "/clinical/argx-113/sjogren/argx-113-2211/ia1/qc_adam"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "sjogren",
+    "study": "argx-113-2211",
+    "path": "/clinical/argx-113/sjogren/argx-113-2211/biostat/staging/ia1/qc_tlf/documents/2211-tlf.json",
+    "repevent": "/clinical/argx-113/sjogren/argx-113-2211/ia1/qc_tlf"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "sjogren",
+    "study": "argx-113-2211",
+    "path": "/clinical/argx-113/sjogren/argx-113-2211/biostat/staging/patient_profiles/documents/2211-patient-profiles.json",
+    "repevent": "/clinical/argx-113/sjogren/argx-113-2211/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "ted",
+    "study": "argx-113-2301",
+    "path": "/clinical/argx-113/ted/argx-113-2301/biostat/staging/patient_profiles/documents/2301-patient-profiles.json",
+    "repevent": "/clinical/argx-113/ted/argx-113-2301/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "ted",
+    "study": "argx-113-2309",
+    "path": "/clinical/argx-113/ted/argx-113-2309/biostat/staging/patient_profiles/documents/2309-patient-profiles.json",
+    "repevent": "/clinical/argx-113/ted/argx-113-2309/patient_profiles"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "x-ind",
+    "study": "argx-113-0000",
+    "path": "/clinical/argx-113/x-ind/argx-113-0000/biostat/staging/other/documents/0000-other.json",
+    "repevent": "/clinical/argx-113/x-ind/argx-113-0000/other"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "x-ind",
+    "study": "argx-113-9006",
+    "path": "/clinical/argx-113/x-ind/argx-113-9006/biostat/staging/ean/documents/9006-ean.json",
+    "repevent": "/clinical/argx-113/x-ind/argx-113-9006/ean"
+  },
+  {
+    "compound": "argx-113",
+    "indication": "x-ind",
+    "study": "argx-113-9006",
+    "path": "/clinical/argx-113/x-ind/argx-113-9006/biostat/staging/ia2/documents/9006-ia2.json",
+    "repevent": "/clinical/argx-113/x-ind/argx-113-9006/ia2"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "mmn",
+    "study": "argx-117-2002",
+    "path": "/clinical/argx-117/mmn/argx-117-2002/biostat/staging/congress_mcc/documents/2002-congress-mcc.json",
+    "repevent": "/clinical/argx-117/mmn/argx-117-2002/congress_mcc"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "mmn",
+    "study": "argx-117-2002",
+    "path": "/clinical/argx-117/mmn/argx-117-2002/biostat/staging/ia_cohort2_lock_posthoc/documents/2002-ia-cohort2-lock-posthoc.json",
+    "repevent": "/clinical/argx-117/mmn/argx-117-2002/ia_cohort2_lock_posthoc"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "mmn",
+    "study": "argx-117-2002",
+    "path": "/clinical/argx-117/mmn/argx-117-2002/biostat/staging/patient_profiles/documents/2002-patient-profiles.json",
+    "repevent": "/clinical/argx-117/mmn/argx-117-2002/patient_profiles"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "mmn",
+    "study": "argx-117-2003",
+    "path": "/clinical/argx-117/mmn/argx-117-2003/biostat/staging/ia2_posthoc/documents/2003-ia2-posthoc.json",
+    "repevent": "/clinical/argx-117/mmn/argx-117-2003/ia2_posthoc"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "mmn",
+    "study": "argx-117-2003",
+    "path": "/clinical/argx-117/mmn/argx-117-2003/biostat/staging/patient_profiles/documents/2003-patient-profiles.json",
+    "repevent": "/clinical/argx-117/mmn/argx-117-2003/patient_profiles"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "x-ind",
+    "study": "argx-117-0000",
+    "path": "/clinical/argx-117/x-ind/argx-117-0000/biostat/staging/dsur/documents/0000-dsur.json",
+    "repevent": "/clinical/argx-117/x-ind/argx-117-0000/dsur"
+  },
+  {
+    "compound": "argx-117",
+    "indication": "x-ind",
+    "study": "argx-117-0000",
+    "path": "/clinical/argx-117/x-ind/argx-117-0000/biostat/staging/other/documents/0000-other.json",
+    "repevent": "/clinical/argx-117/x-ind/argx-117-0000/other"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "cms",
+    "study": "argx-119-2301",
+    "path": "/clinical/argx-119/cms/argx-119-2301/biostat/staging/data_review/documents/2301-data-review.json",
+    "repevent": "/clinical/argx-119/cms/argx-119-2301/data_review"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "cms",
+    "study": "argx-119-2302",
+    "path": "/clinical/argx-119/cms/argx-119-2302/biostat/staging/data_review/documents/2302-data-review.json",
+    "repevent": "/clinical/argx-119/cms/argx-119-2302/data_review"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "cms",
+    "study": "argx-119-2302",
+    "path": "/clinical/argx-119/cms/argx-119-2302/biostat/staging/patient_profiles/documents/2302-patient-profiles.json",
+    "repevent": "/clinical/argx-119/cms/argx-119-2302/patient_profiles"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "hv",
+    "study": "argx-119-2201",
+    "path": "/clinical/argx-119/hv/argx-119-2201/biostat/staging/final/qc_adam/documents/2201-adam.json",
+    "repevent": "/clinical/argx-119/hv/argx-119-2201/final/qc_adam"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "hv",
+    "study": "argx-119-2201",
+    "path": "/clinical/argx-119/hv/argx-119-2201/biostat/staging/final/qc_tlf/documents/2201-tlf.json",
+    "repevent": "/clinical/argx-119/hv/argx-119-2201/final/qc_tlf"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "x-ind",
+    "study": "argx-119-0000",
+    "path": "/clinical/argx-119/x-ind/argx-119-0000/biostat/staging/dsur/documents/0000-dsur.json",
+    "repevent": "/clinical/argx-119/x-ind/argx-119-0000/dsur"
+  },
+  {
+    "compound": "argx-119",
+    "indication": "x-ind",
+    "study": "argx-119-0000",
+    "path": "/clinical/argx-119/x-ind/argx-119-0000/biostat/staging/other/documents/0000-other.json",
+    "repevent": "/clinical/argx-119/x-ind/argx-119-0000/other"
+  }
+]
