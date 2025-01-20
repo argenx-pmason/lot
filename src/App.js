@@ -102,7 +102,7 @@ function App() {
     fileDownloadPrefix = "https://" + host + "/lsaf/filedownload/sdd%3A//", // prefix for downloading files from LSAF
     [openInfo, setOpenInfo] = useState(false),
     types = ["Dataset", "Figure", "Listing", "Other", "Table"],
-    remote_json_lots = "/general/biostat/metadata/projects/json_lots.json",
+    remote_json_lots = "/general/biostat/apps/lot/json_lots.json",
     users = userInfo
       .sort((a, b) => a.name.localeCompare(b.name))
       .map((user) => {
@@ -888,7 +888,7 @@ function App() {
       // open the file in a new tab
       window.open(
         fileDownloadPrefix +
-          "/general/biostat/tools/view/index.html?lsaf=" +
+          "/general/biostat/apps/view/index.html?lsaf=" +
           path,
         "_blank"
       );
